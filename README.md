@@ -1,4 +1,4 @@
 1.npm install
-2.node ./scripts/create_database
+2.mongod
 3. npm start
-4.http://localhost:8080/
+4.http://localhost:3000/

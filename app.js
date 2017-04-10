@@ -29,7 +29,7 @@ app.use(express.static(__dirname + '/app/public'));
 
 var dbHost = process.env.DB_HOST || 'localhost'
 var dbPort = process.env.DB_PORT || 27017;
-var dbName = process.env.DB_NAME || 'node-login';
+var dbName = process.env.DB_NAME || 'cnn-news';
 
 var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
 if (app.get('env') == 'live'){

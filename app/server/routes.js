@@ -85,7 +85,7 @@ module.exports = function(app) {
 		req.session.destroy(function(e){ res.status(200).send('ok'); });
 	})
 	
-// creating new accounts //
+// creating new users //
 	
 	app.get('/signup', function(req, res) {
 		res.render('signup', {  title: 'Signup', countries : CT });
@@ -158,11 +158,11 @@ module.exports = function(app) {
 		})
 	});
 	
-// view & delete accounts //
+// view & delete users //
 	
 	app.get('/print', function(req, res) {
-		AM.getAllRecords( function(e, accounts){
-			res.render('print', { title : 'Account List', accts : accounts });
+		AM.getAllRecords( function(e, users){
+			res.render('print', { title : 'Account List', accts : users });
 		})
 	});
 	

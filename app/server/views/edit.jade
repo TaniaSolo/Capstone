@@ -6,23 +6,25 @@ block content
 	nav.navbar.navbar-default.navbar-fixed-top
 		.container
 			.navbar-header
-				.navbar-brand Your personal CNN news
+				.navbar-brand Control Panel
 			ul.nav.navbar-nav.navbar-right
-				li
-					.navbar-btn#btn-edit.btn.btn-default
-						| Edit Profile
+
+                li
+					.navbar-btn#btn-home.btn.btn-default
+						| Home
 				li
 					.navbar-btn#btn-logout.btn.btn-default
 						| Sign Out
 				
 
-	span(style="font-size: 1.25em; margin-top:2%" href="/graphing").glyphicon.glyphicon-pencil
-	include travel.html
+	include account
+	include modals/alert
+	include modals/confirm
 
 block scripts
 	script(src='/vendor/jquery-2.2.3.min.js')
 	script(src='/vendor/jquery.form.min.js')
 	script(src='/vendor/bootstrap.min.js')
-	script(src='/js/views/home.js')
-	script(src='/js/controllers/homeController.js')
+	script(src='/js/views/edit.js')
+	script(src='/js/controllers/editController.js')
 	script(src='/js/form-validators/accountValidator.js')

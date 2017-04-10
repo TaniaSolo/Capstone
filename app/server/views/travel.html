@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Travel</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+    <!-- Temporary fix for navbar responsiveness -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+<!-- jQuery Version 3.1.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="js/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<script>
+
+init1("0","travel0");
+init1("1","travel1");
+init1("2","travel2");
+init1("3","travel3");
+function loadJSON(callback) {   
+
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', "http://localhost:3000/travel0", true); 
+	 
+    xobj.onreadystatechange = function () {
+	
+          if (xobj.readyState == 4 && xobj.status == "200") {
+		 
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
+ }
+ 
+ function init() {
+
+ loadJSON(function(response) {
+  // Parse JSON string into object
+    var actual_JSON = JSON.parse(response); 
+	
+	//window.alert(actual_JSON.travel[0].title);
+	document.getElementById('h3_0').innerHTML = actual_JSON.travel[0].title;
+	//document.getElementById('p_0').innerHTML = actual_JSON.travel[0].content.substr(0, 100);
+	window.alert(actual_JSON.travel[0].content);
+	window.alert(actual_JSON.travel[0].content.substr(0, 10));
+	document.getElementById('a_0').href = actual_JSON.travel[0].link;
+	document.getElementById('img_0').src = "https:"+actual_JSON.travel[0].main_img;
+ });
+}
+
+/*travel 1*/
+function loadJSON1(jsonf, callback) {   
+
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', "http://localhost:3000/"+jsonf, true); 
+	 
+    xobj.onreadystatechange = function () {
+	
+          if (xobj.readyState == 4 && xobj.status == "200") {
+		 
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
+ }
+ 
+ function init1(id,jsonf) {
+
+ loadJSON1(jsonf, function(response) {
+  // Parse JSON string into object
+    var actual_JSON = JSON.parse(response); 
+	
+	
+	document.getElementById('h3_'+id).innerHTML = actual_JSON.travel[0].title;
+	document.getElementById('p_'+id).innerHTML = actual_JSON.travel[0].content.substr(0, 500)+"...";
+	document.getElementById('a_'+id).href = actual_JSON.travel[0].link;
+	document.getElementById('img_'+id).src = "https:"+actual_JSON.travel[0].main_img;
+ });
+}
+</script>
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" href="#">News Aggregation Portal</a>
+            <div class="collapse navbar-collapse" id="navbarExample">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Politics </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="travel.html">Travel<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="opinion.html">Opinion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="health.html">Health</a>
+                    </li>
+					 <li class="nav-item">
+                        <a class="nav-link" href="faith.html">Faith</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="entertainment.html">Entertainment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <h1 class="my-4">Travel <small>Top Stories</small></h1>
+
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img  id="img_0" class="img-fluid rounded mb-3 mb-md-0"  alt="obama" width="700" height="700">
+                </a>
+            </div>
+           
+        </div>
+        <!-- /.row -->
+
+        <hr>
+<!-- Project One -->
+        <div class="row">
+           
+            <div class="col-md-5">
+                <h3 id="h3_0"></h3>
+                <p id="p_0"></p>
+                <a class="btn btn-primary"  id="a_0">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project Two -->
+        <div class="row">
+           
+            <div class="col-md-5">
+                <h3 id="h3_1"></h3>
+                <p id="p_1"></p>
+                <a class="btn btn-primary"  id="a_1">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Three -->
+        <div class="row">
+          
+            <div class="col-md-5">
+                <h3 id="h3_2"></h3>
+                <p id="p_2" ></p>
+                <a class="btn btn-primary" id="a_2">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Four -->
+        <div class="row">
+
+          
+            <div class="col-md-5">
+                <h3 id ="h3_3"></h3>
+                <p id="p_3"></p>
+                <a class="btn btn-primary" id="a_3">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-inverse">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    
+
+</body>
+
+</html>

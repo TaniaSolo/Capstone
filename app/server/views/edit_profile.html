@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Edit Profile</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+    <!-- Temporary fix for navbar responsiveness -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    .buttonStyle{
+    margin:10px}
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+<!-- jQuery Version 3.1.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="js/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" href="#">News Aggregation Portal</a>
+            <div class="collapse navbar-collapse" id="navbarExample">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Politics </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="travel.html">Travel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="opinion.html">Opinion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="health.html">Health</a>
+                    </li>
+					 <li class="nav-item">
+                        <a class="nav-link" href="faith.html">Faith</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="entertainment.html">Entertainment</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="edit_profile.html">Edit Profile<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <h1 class="my-4">Edit Profile</h1>
+    <form name="editForm" method="post" onsubmit="return validateAll()">
+    <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><label for="first">First Name: </label></td>
+                        <td><input type="text" name="first" id="first" size="30" maxlength="30" tabindex="1"></td>
+                      </tr>
+                      <tr>
+                        <td><label for="last">Last Name: </label></td>
+                        <td><input type="text" name="last" id="last" size="30" maxlength="30" tabindex="2"></td>
+                      </tr>
+                      <tr>
+                        <td><label for="address">Address: </label></td>
+                        <td><textarea name="address" id="address" rows="2" cols="29" tabindex="3"></textarea></td>
+                      </tr>
+                   
+                      <tr>
+                        <td><label for="password">Password: </label></td>
+                        <td><input type="password" name="password" id="password" size="30" maxlength="30" tabindex="4"></td>
+                      </tr>
+                        <tr>
+                         <td><label for="preferences">News Preferences:</label></td>
+                             <td>
+                             <input type="checkbox" name="Us" value="U.S."> U.S.<br>
+  							 <input type="checkbox" name="World" value="World"> World<br>
+  							 <input type="checkbox" name="Politics" value="Politics"> Politics<br>
+  							 <input type="checkbox" name="Money" value="Money"> Money<br>
+  							 <input type="checkbox" name="Opinion" value="Opinion"> Opinion<br>
+  							 <input type="checkbox" name="Health" value="Health"> Health<br>
+  							 <input type="checkbox" name="Entertainment" value="Entertainment"> Entertainment<br>
+  							 <input type="checkbox" name="Tech" value="Tech"> Tech<br>
+  							 <input type="checkbox" name="Style" value="Style"> Style<br>
+  							 <input type="checkbox" name="Travel" value="Travel"> Travel<br>
+  							 <input type="checkbox" name="Sports" value="Sports"> Sports<br>
+                            </td>
+                      	</tr>
+                    </tbody>
+                  </table>
+                  <div style="text-align:center">
+                        <input type="submit" name="submit" id="submit" value="Save Changes" class="buttonStyle" tabindex="5">
+                        <input type="reset" name="ResetButton" id="ResetButton" value="Reset" class="buttonStyle" tabindex="6">
+                    </div>
+                  </form>
+                </div>
+    <br>
+    <!-- Footer -->
+    <footer class="py-5 bg-inverse">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+</body>
+</html>

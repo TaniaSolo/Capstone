@@ -1,3 +1,4 @@
+var User       = require('../app/model/user');
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
@@ -20,12 +21,56 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
-      // profile SECTION =========================
+    // profile SECTION =========================
     app.get('/edit_profile', isLoggedIn, function(req, res) {
         res.render('edit_profile.ejs', {
             user : req.user
         });
     });
+
+    app.post('/edit_profile', isLoggedIn, function(req, res) {
+        user            = req.user;
+       
+        console.log(req.body.firstName);
+        console.log(req.body.lastName);
+        console.log(req.body.address);
+        console.log(req.body.password);
+
+        User.findById(req.session.passport.user, function(err, user) {
+        if (!user)
+            return next(new Error('Could not load Document'));
+        else {
+
+            user.first = req.body.firstName;
+            user.last = req.body.lastName;
+            user.address = req.body.address;
+            user.password = user.generateHash(req.body.password);
+            user.preferences.world = req.body.world ? true: false;
+            user.preferences.politics = req.body.politics? true: false;
+            user.preferences.money = req.body.money ? true: false;
+            user.preferences.opinion = req.body.opinion ? true: false;
+            user.preferences.health = req.body.health ? true: false;
+            user.preferences.sport = req.body.sport ? true: false;
+            user.preferences.entertainment = req.body.entertainment ? true: false;
+            user.preferences.tech = req.body.tech ? true: false;
+            user.preferences.style = req.body.style ? true: false;
+            user.preferences.travel = req.body.travel ? true: false;
+            user.preferences.us = req.body.us ? true: false;
+            }
+            user.save(function(err) {
+            if (err)
+                console.log('error');
+            else {
+                console.log('success');
+                res.render('profile.ejs', {
+                    user : user
+                });
+            }
+            });
+        }); 
+});
+
+    
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================

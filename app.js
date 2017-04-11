@@ -22,7 +22,7 @@ var morgan       = require('morgan');
 
 app.locals.pretty = true;
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/app/server/views');
+app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs'); // set up ejs for templating
 // app.set('view engine', 'jade');
 app.use(cookieParser()); //read cookies (needed for auth)
@@ -61,7 +61,7 @@ mongoose.connect(configDB.url); // connect to our database
 require('./config/passport')(passport); // pass passport for configuration
 
 
-require('./app/server/routes')(app, passport);
+require('./app/routes')(app, passport);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));

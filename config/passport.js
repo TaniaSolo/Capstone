@@ -2,7 +2,7 @@
 var LocalStrategy    = require('passport-local').Strategy;
 
 // load up the user model
-var User       = require('../app/server/model/user');
+var User       = require('../app/model/user');
 
 // load the auth variables
 var configAuth = require('./auth'); // use this one for testing
@@ -42,7 +42,7 @@ module.exports = function(passport) {
 
         // asynchronous
         process.nextTick(function() {
-            User.findOne({ 'local.email' :  email }, function(err, user) {
+            User.findOne({ 'email' :  email }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
                     return done(err);
@@ -79,7 +79,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
             // if the user is not already logged in:
             if (!req.user) {
-                User.findOne({ 'local.email' :  email }, function(err, user) {
+                User.findOne({ 'email' :  email }, function(err, user) {
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -121,7 +121,7 @@ module.exports = function(passport) {
             } else if ( !req.user.email ) {
                 // ...presumably they're trying to connect a local account
                 // BUT let's check if the email used to connect a local account is being used by another user
-                User.findOne({ 'local.email' :  email }, function(err, user) {
+                User.findOne({ 'email' :  email }, function(err, user) {
                     if (err)
                         return done(err);
                     

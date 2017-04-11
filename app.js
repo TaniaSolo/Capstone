@@ -14,14 +14,14 @@ var cookieParser = require('cookie-parser');
 var MongoStore = require('connect-mongo')(session);
 var app = express();
 
-var port     = process.env.PORT || 3000;
+var port     = process.env.PORT || 3002;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var morgan       = require('morgan');
 
 app.locals.pretty = true;
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3002);
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs'); // set up ejs for templating
 // app.set('view engine', 'jade');

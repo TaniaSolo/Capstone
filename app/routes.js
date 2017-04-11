@@ -62,9 +62,7 @@ module.exports = function(app, passport) {
                 console.log('error');
             else {
                 console.log('success');
-                res.render('profile.ejs', {
-                    user : user
-                });
+                res.redirect('/profile');
             }
             });
         }); 

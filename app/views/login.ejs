@@ -6,15 +6,18 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 	<style>
 		body 		{ padding-top:80px; }
+		.btn{width:385px;height:40px}
+		.box{ width: 450px;height: 450px;border: 1px solid lightgrey;border-radius:5px;padding:30px;}
+		p{text-align:center}
 	</style>
 </head>
 <body>
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
-
+<div class="box">
 	<h1>Login</h1>
-
+	<br>
 	<!-- show any messages that come back with authentication -->
 	<% if (message.length > 0) { %>
 		<div class="alert alert-danger"><%= message %></div>
@@ -30,17 +33,19 @@
 			<label>Password</label>
 			<input type="password" class="form-control" name="password">
 		</div>
-
+		
+		<div align="center">
+		<br>
 		<button type="submit" class="btn btn-warning btn-lg">Login</button>
+		</div>
 	</form>
 
 	<hr>
 
-	<p>Need an account? <a href="/signup">Signup</a></p>
-	<p>Or go <a href="/">home</a>.</p>
+	<p>Need an account? <br><a href="/signup">Sign Up</a> or go to <a href="/">Home</a>.</p>
 
 </div>
-
+</div>
 </div>
 </body>
 </html>

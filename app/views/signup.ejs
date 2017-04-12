@@ -5,13 +5,16 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 	<style>
 		body 		{ padding-top:80px; }
+		.btn{width:388px;height:40px}
+		.box{ width: 450px;height: 720px;border: 1px solid lightgrey;border-radius:5px;padding:30px;}
+		p{text-align:center}
 	</style>
 </head>
 <body>
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
-
+<div class="box">
 	<h1>Signup</h1>
 
 	<!-- show any messages that come back with authentication -->
@@ -52,17 +55,16 @@
 			<label>Password</label>
 			<input type="password" class="form-control" name="password">
 		</div>
-		
+		<br>
 		<button type="submit" class="btn btn-warning btn-lg">Signup</button>
 	</form>
 
 	<hr>
 
-	<p>Already have an account? <a href="/login">Login</a></p>
-	<p>Or go <a href="/">home</a>.</p>
+	<p>Already have an account? <br><a href="/login">Login</a> or go to <a href="/">Home</a>.</p>
 
 </div>
-
+</div>
 </div>
 </body>
 </html>

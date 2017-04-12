@@ -45,17 +45,12 @@ module.exports = function(app, passport) {
             user.last = req.body.lastName;
             user.address = req.body.address;
             user.password = user.generateHash(req.body.password);
-            user.preferences.world = req.body.world ? true: false;
+            user.preferences.faith = req.body.faith ? true: false;
             user.preferences.politics = req.body.politics? true: false;
-            user.preferences.money = req.body.money ? true: false;
             user.preferences.opinion = req.body.opinion ? true: false;
             user.preferences.health = req.body.health ? true: false;
-            user.preferences.sport = req.body.sport ? true: false;
             user.preferences.entertainment = req.body.entertainment ? true: false;
-            user.preferences.tech = req.body.tech ? true: false;
-            user.preferences.style = req.body.style ? true: false;
             user.preferences.travel = req.body.travel ? true: false;
-            user.preferences.us = req.body.us ? true: false;
             }
             user.save(function(err) {
             if (err)

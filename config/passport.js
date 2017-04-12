@@ -97,17 +97,12 @@ module.exports = function(passport) {
                         newUser.address  = req.param('address');
                         newUser.email    = email;
                         newUser.password = newUser.generateHash(password);
-                        newUser.preferences.world = req.param('world');
+                        newUser.preferences.faith = req.param('faith');
                         newUser.preferences.politics = req.param('politics');
-                        newUser.preferences.money = req.param('money');
                         newUser.preferences.opinion = req.param('opinion');
                         newUser.preferences.health = req.param('health');
                         newUser.preferences.entertainment = req.param('entertainment');
-                        newUser.preferences.tech = req.param('tech');
-                        newUser.preferences.style = req.param('style');
                         newUser.preferences.travel = req.param('travel');
-                        newUser.preferences.sports = req.param('sports');
-                        newUser.preferences.us = req.param('us');
 
                         newUser.save(function(err) {
                             if (err)

@@ -5,21 +5,15 @@ var bcrypt   = require('bcrypt-nodejs');
 var userSchema = mongoose.Schema({
         first        : String,
         last         : String,
-        address      : String,
         email        : String,
         password     : String,
         preferences  : {
-            world: { type: Boolean, default: false },
+            faith: { type: Boolean, default: false },
             politics: { type: Boolean, default: false },
-            money: { type: Boolean, default: false },
             opinion: { type: Boolean, default: false },
             health: { type: Boolean, default: false },
             entertainment: { type: Boolean, default: false },
-            tech: { type: Boolean, default: false },
-            style: { type: Boolean, default: false },
             travel: { type: Boolean, default: false },
-            sports: { type: Boolean, default: false },
-            us: { type: Boolean, default: false },
       },
 });
 

@@ -50,12 +50,12 @@
 
 		<div class="form-group">
 			<label>First Name</label>
-			<input type="text" class="form-control" name="firstName">
+			<input type="text" class="form-control" name="firstName" value =<%= user.first %>>
 		</div>
 
 		<div class="form-group">
 			<label>Last Name</label>
-			<input type="text" class="form-control" name="lastName">
+			<input type="text" class="form-control" name="lastName" value =<%= user.last %>>
 		</div>
 		<div class="form-group">
 			<label>Email Address</label>
@@ -64,13 +64,48 @@
 		 <td><label for="preferences">News Preferences:</label></td>
                              <td>
 							 <br /> 
-                            
-  							 <input type="checkbox" name="faith" value="Faith"> Faith<br>
-  							 <input type="checkbox" name="politics" value="Politics"> Politics<br>
-  							 <input type="checkbox" name="opinion" value="Opinion"> Opinion<br>
-  							 <input type="checkbox" name="health" value="Health"> Health<br>
-  							 <input type="checkbox" name="entertainment" value="Entertainment"> Entertainment<br>
-  							 <input type="checkbox" name="travel" value="Travel"> Travel<br>
+                            <%if(user.preferences.faith) {%>
+  							 <input type="checkbox" name="faith" checked="true"> Faith<br>
+                 <%} else{%>
+                  <input type="checkbox" name="faith" unchecked="true"> Faith<br>
+                 <% } %>
+
+                       <%if(user.preferences.politics) {%>
+                 <input type="checkbox" name="politics" checked="true"> Politics<br>
+                 <%} else{%>
+                  <input type="checkbox" name="politics" unchecked="true"> Politics<br>
+                 <% } %>
+
+
+  							  <%if(user.preferences.opinion) {%>
+                 <input type="checkbox" name="opinion" checked="true"> Opinion<br>
+                 <%} else{%>
+                  <input type="checkbox" name="opinion" unchecked="true"> Opinion<br>
+                 <% } %>
+
+  							
+
+                  <%if(user.preferences.health) {%>
+                 <input type="checkbox" name="health" checked="true"> Health<br>
+                 <%} else{%>
+                  <input type="checkbox" name="health" unchecked="true"> Health<br>
+                 <% } %>
+
+
+
+                  <%if(user.preferences.entertainment) {%>
+                 <input type="checkbox" name="entertainment" checked="true"> Entertainment<br>
+                 <%} else{%>
+                  <input type="checkbox" name="entertainment" unchecked="true"> Entertainment<br>
+                 <% } %>
+
+                 <%if(user.preferences.travel) {%>
+                 <input type="checkbox" name="travel" checked="true"> Travel<br>
+                 <%} else{%>
+                  <input type="checkbox" name="travel" unchecked="true"> Travel<br>
+                 <% } %>
+  			
+  							
 							    <br /> 
                             </td>
                       	</tr>

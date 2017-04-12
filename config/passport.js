@@ -91,10 +91,9 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('signupMessage', 'First Name can not be blank!'));
                     } else if(req.param('lastName').length == 0){
                         return done(null, false, req.flash('signupMessage', 'Last Name can not be blank!'));
-                     } else if(!req.param('world') &&  !req.param('politics') && !req.param('money')
-                     && !req.param('opinion') && !req.param('health') && !req.param('entertainment')
-                     && !req.param('tech') && !req.param('style') && !req.param('travel')
-                     && !req.param('sports') && !req.param('us')){
+                     } else if(!req.param('faith') && !req.param('politics') 
+                     && !req.param('opinion') && !req.param('health') 
+                     && !req.param('entertainment') && !req.param('travel')){
                         return done(null, false, req.flash('signupMessage', 'At least one preference should be added!'));
                     } else {
 

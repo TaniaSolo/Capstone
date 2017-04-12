@@ -70,9 +70,9 @@ module.exports = function(passport) {
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
-    },
+    }, 
     function(req, email, password, done) {
-        if (email)
+        if (email) {
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
         // asynchronous
@@ -87,6 +87,15 @@ module.exports = function(passport) {
                     // check to see if theres already a user with that email
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    } else if(req.param('firstName').length == 0){
+                        return done(null, false, req.flash('signupMessage', 'First Name can not be blank!'));
+                    } else if(req.param('lastName').length == 0){
+                        return done(null, false, req.flash('signupMessage', 'Last Name can not be blank!'));
+                     } else if(!req.param('world') &&  !req.param('politics') && !req.param('money')
+                     && !req.param('opinion') && !req.param('health') && !req.param('entertainment')
+                     && !req.param('tech') && !req.param('style') && !req.param('travel')
+                     && !req.param('sports') && !req.param('us')){
+                        return done(null, false, req.flash('signupMessage', 'At least one preference should be added!'));
                     } else {
 
                         // create the user
@@ -141,6 +150,8 @@ module.exports = function(passport) {
             }
 
         });
-
+     } else {
+         return done(null, false, req.flash('loginMessage', 'Email can not be blank!'));
+     }
     }));
 };

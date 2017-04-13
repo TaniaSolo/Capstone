@@ -14,7 +14,44 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
+	
+	// POLITICS SECTION =========================
+	   app.get('/politics', isLoggedIn, function(req, res) {
+        res.render('politics.ejs', {
+            user : req.user
+        });
+    });
+	
+		// FAITH SECTION =========================
+	   app.get('/faith', isLoggedIn, function(req, res) {
+        res.render('faith.ejs', {
+            user : req.user
+        });
+    });
+	
+			// Entertainment SECTION =========================
+	   app.get('/entertainment', isLoggedIn, function(req, res) {
+        res.render('entertainment.ejs', {
+            user : req.user
+        });
+    });
+	
+			// HEALTH SECTION =========================
+	   app.get('/health', isLoggedIn, function(req, res) {
+        res.render('health.ejs', {
+            user : req.user
+        });
+    });
+	
+				// OPINION SECTION =========================
+	   app.get('/opinion', isLoggedIn, function(req, res) {
+        res.render('opinion.ejs', {
+            user : req.user
+        });
+    });
 
+
+	
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
         req.logout();
@@ -57,7 +94,7 @@ module.exports = function(app, passport) {
                 console.log('error');
             else {
                 console.log('success');
-                res.redirect('/profile');
+                res.redirect('/edit_profile');
             }
             });
         }); 
@@ -78,7 +115,7 @@ module.exports = function(app, passport) {
 
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/edit_profile', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -91,7 +128,7 @@ module.exports = function(app, passport) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/edit_profile', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -106,7 +143,7 @@ module.exports = function(app, passport) {
             res.render('connect-local.ejs', { message: req.flash('loginMessage') });
         });
         app.post('/connect/local', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/edit_profile', // redirect to the secure profile section
             failureRedirect : '/connect/local', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -124,7 +161,7 @@ module.exports = function(app, passport) {
         user.email    = undefined;
         user.password = undefined;
         user.save(function(err) {
-            res.redirect('/profile');
+            res.redirect('/edit_profile');
         });
     });
 };

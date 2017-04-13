@@ -9,7 +9,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Travel</title>
+    <title>Politics</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -43,15 +43,15 @@
 
 <script>
 
-init1("0","travel0");
-init1("1","travel1");
-init1("2","travel2");
-init1("3","travel3");
+init1("0","politics0");
+init1("1","politics1");
+init1("2","politics2");
+init1("3","politics3");
 function loadJSON(callback) {   
 
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-    xobj.open('GET', "http://localhost:3000/travel0", true); 
+    xobj.open('GET', "http://localhost:3000/politics0", true); 
 	 
     xobj.onreadystatechange = function () {
 	
@@ -64,23 +64,9 @@ function loadJSON(callback) {
     xobj.send(null);  
  }
  
- function init() {
 
- loadJSON(function(response) {
-  // Parse JSON string into object
-    var actual_JSON = JSON.parse(response); 
-	
-	//window.alert(actual_JSON.travel[0].title);
-	document.getElementById('h3_0').innerHTML = actual_JSON.travel[0].title;
-	//document.getElementById('p_0').innerHTML = actual_JSON.travel[0].content.substr(0, 100);
-	window.alert(actual_JSON.travel[0].content);
-	window.alert(actual_JSON.travel[0].content.substr(0, 10));
-	document.getElementById('a_0').href = actual_JSON.travel[0].link;
-	document.getElementById('img_0').src = "https:"+actual_JSON.travel[0].main_img;
- });
-}
 
-/*travel 1*/
+
 function loadJSON1(jsonf, callback) {   
 
     var xobj = new XMLHttpRequest();
@@ -105,10 +91,10 @@ function loadJSON1(jsonf, callback) {
     var actual_JSON = JSON.parse(response); 
 	
 	
-	document.getElementById('h3_'+id).innerHTML = actual_JSON.travel[0].title;
-	document.getElementById('p_'+id).innerHTML = actual_JSON.travel[0].content.substr(0, 500)+"...";
-	document.getElementById('a_'+id).href = actual_JSON.travel[0].link;
-	document.getElementById('img_'+id).src = "https:"+actual_JSON.travel[0].main_img;
+	document.getElementById('h3_'+id).innerHTML = actual_JSON.politics[0].title;
+	document.getElementById('p_'+id).innerHTML = actual_JSON.politics[0].content.substr(0, 500)+"...";
+	document.getElementById('a_'+id).href = actual_JSON.politics[0].link;
+	document.getElementById('img_'+id).src = "https:"+actual_JSON.politics[0].main_img;
  });
 }
 </script>
@@ -123,14 +109,14 @@ function loadJSON1(jsonf, callback) {
                 <ul class="navbar-nav ml-auto">
 
                    <%if(user.preferences.politics) {%>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/politics">Politics </a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/politics">Politics <span class="sr-only">(current)</span></a>
                     </li>
                         <%}%>
 
                        <%if(user.preferences.travel) {%>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/profile">Travel<span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Travel</a>
                     </li>
                         <%}%>
 
@@ -174,7 +160,7 @@ function loadJSON1(jsonf, callback) {
     <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="my-4">Travel <small>Top Stories</small></h1>
+        <h1 class="my-4">Politics <small>Top Stories</small></h1>
 
         <!-- Project One -->
         <div class="row">

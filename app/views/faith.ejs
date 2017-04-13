@@ -93,6 +93,8 @@ function loadJSON1(jsonf, callback) {
 	
 	document.getElementById('h3_'+id).innerHTML = actual_JSON.faithreligion[0].title;
 	document.getElementById('p_'+id).innerHTML = actual_JSON.faithreligion[0].content.substr(0, 500)+"...";
+	document.getElementById('p_time_'+id).innerHTML = actual_JSON.faithreligion[0].release;
+	document.getElementById('p_author_'+id).innerHTML = actual_JSON.faithreligion[0].author;
 	document.getElementById('a_'+id).href = actual_JSON.faithreligion[0].link;
 	document.getElementById('img_'+id).src = "https:"+actual_JSON.faithreligion[0].main_img;
  });
@@ -115,8 +117,8 @@ function loadJSON1(jsonf, callback) {
                         <%}%>
 
                        <%if(user.preferences.travel) {%>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/profile">Travel<span class="sr-only">(current)</span></a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/profile">Travel</a>
                     </li>
                         <%}%>
 
@@ -162,7 +164,7 @@ function loadJSON1(jsonf, callback) {
         <!-- Page Heading -->
         <h1 class="my-4">Faith <small>Top Stories</small></h1>
 
-        <!-- Project One -->
+      <!-- Project One -->
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
@@ -177,10 +179,12 @@ function loadJSON1(jsonf, callback) {
 <!-- Project One -->
         <div class="row">
            
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <h3 id="h3_0"></h3>
+				<h6><p id="p_time_0"></p></h6>
+				<h5><p id="p_author_0"></p></h5>
                 <p id="p_0"></p>
-                <a class="btn btn-primary"  id="a_0">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a  id="a_0" target="blank">Read More</a>
             </div>
         </div>
         <!-- /.row -->
@@ -189,10 +193,12 @@ function loadJSON1(jsonf, callback) {
         <!-- Project Two -->
         <div class="row">
            
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <h3 id="h3_1"></h3>
+				<h6><p id="p_time_1"></p></h6>
+				<h5><p id="p_author_1"></p></h5>
                 <p id="p_1"></p>
-                <a class="btn btn-primary"  id="a_1">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a  id="a_1" target="blank">Read More</a>
             </div>
         </div>
         <!-- /.row -->
@@ -202,10 +208,12 @@ function loadJSON1(jsonf, callback) {
         <!-- Project Three -->
         <div class="row">
           
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <h3 id="h3_2"></h3>
+				<h6><p id="p_time_2"></p></h6>
+				<h5><p id="p_author_2"></p></h5>
                 <p id="p_2" ></p>
-                <a class="btn btn-primary" id="a_2">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a  id="a_2" target="blank">Read More</a>
             </div>
         </div>
         <!-- /.row -->
@@ -216,34 +224,19 @@ function loadJSON1(jsonf, callback) {
         <div class="row">
 
           
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <h3 id ="h3_3"></h3>
+				<h6><p id="p_time_3"></p></h6>
+				<h5><p id="p_author_3"></p></h5>
                 <p id="p_3"></p>
-                <a class="btn btn-primary" id="a_3">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a  id="a_3" target="blank">Read More</a>
             </div>
         </div>
         <!-- /.row -->
 
         <hr>
 
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
+       
 
     </div>
     <!-- /.container -->
@@ -251,10 +244,11 @@ function loadJSON1(jsonf, callback) {
     <!-- Footer -->
     <footer class="py-5 bg-inverse">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+            <p class="m-0 text-center text-white">News Aggregation Portal</p>
         </div>
         <!-- /.container -->
     </footer>
+
 
     
 

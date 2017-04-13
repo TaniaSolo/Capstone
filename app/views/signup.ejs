@@ -4,9 +4,9 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 	<style>
-		body 		{ padding-top:80px; }
+		body 		{ padding-top:50px; }
 		.btn{width:388px;height:40px}
-		.box{ width: 450px;height: 720px;border: 1px solid lightgrey;border-radius:5px;padding:30px;}
+		.box{ width: 450px;height: 750px;border: 1px solid lightgrey;border-radius:5px;padding:30px;margin-bottom:25px}
 		p{text-align:center}
 	</style>
 </head>
@@ -16,7 +16,7 @@
 <div class="col-sm-6 col-sm-offset-3">
 <div class="box">
 	<h1>Signup</h1>
-
+	<br>
 	<!-- show any messages that come back with authentication -->
 	<% if (message.length > 0) { %>
 		<div class="alert alert-danger"><%= message %></div>

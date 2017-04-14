@@ -16,6 +16,8 @@ var userSchema = mongoose.Schema({
             health: { type: Boolean, default: false },
             entertainment: { type: Boolean, default: false },
             travel: { type: Boolean, default: false },
+			sport: { type: Boolean, default: false },
+            tech: { type: Boolean, default: false },
       },
 });
 

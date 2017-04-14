@@ -136,7 +136,7 @@ function loadJSON1(jsonf, callback) {
 
                      <%if(user.preferences.faith) {%>
 					 <li class="nav-item">
-                        <a class="nav-link" href="/faith">Faith</a>
+                        <a class="nav-link" href="/faith">BeatGoesOn</a>
                     </li>
                     <%}%>
 
@@ -147,6 +147,19 @@ function loadJSON1(jsonf, callback) {
                     </li>
                       <%}%>
 
+					  
+					  <%if(user.preferences.sport) {%>
+					<li class="nav-item">
+                        <a class="nav-link" href="/sport">Sport</a>
+                    </li>
+                      <%}%>
+					  
+					      <%if(user.preferences.tech) {%>
+					<li class="nav-item">
+                        <a class="nav-link" href="/tech">Tech</a>
+                    </li>
+                      <%}%>
+					  
                     <li class="nav-item">
                         <a class="nav-link" href="/edit_profile">Edit Profile</a>
                     </li>

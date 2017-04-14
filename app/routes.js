@@ -62,6 +62,20 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
+	
+			// SPORTS SECTION =========================
+	   app.get('/sport', isLoggedIn, function(req, res) {
+        res.render('sport.ejs', {
+            user : req.user
+        });
+    });
+	
+				// TECH SECTION =========================
+	   app.get('/tech', isLoggedIn, function(req, res) {
+        res.render('tech.ejs', {
+            user : req.user
+        });
+    });
 
 
 	
@@ -109,6 +123,8 @@ module.exports = function(app, passport) {
             user.preferences.health = req.body.health ? true: false;
             user.preferences.entertainment = req.body.entertainment ? true: false;
             user.preferences.travel = req.body.travel ? true: false;
+			user.preferences.sport = req.body.sport ? true: false;
+            user.preferences.tech = req.body.tech ? true: false;
             }
             user.save(function(err) {
             if (err)

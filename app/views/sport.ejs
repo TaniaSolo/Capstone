@@ -9,7 +9,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>BeatGoesOn</title>
+    <title>Sport</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -43,15 +43,15 @@
 
 <script>
 
-init1("0","faithreligion0");
-init1("1","faithreligion1");
-init1("2","faithreligion2");
-init1("3","faithreligion3");
+init1("0","sport0");
+init1("1","sport1");
+init1("2","sport2");
+init1("3","sport3");
 function loadJSON(callback) {   
 
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-    xobj.open('GET', "http://localhost:3000/faithreligion0", true); 
+    xobj.open('GET', "http://localhost:3000/sport0", true); 
 	 
     xobj.onreadystatechange = function () {
 	
@@ -91,12 +91,12 @@ function loadJSON1(jsonf, callback) {
     var actual_JSON = JSON.parse(response); 
 	
 	
-	document.getElementById('h3_'+id).innerHTML = actual_JSON.faithreligion[0].title;
-	document.getElementById('p_'+id).innerHTML = actual_JSON.faithreligion[0].content.substr(0, 500)+"...";
-	document.getElementById('p_time_'+id).innerHTML = actual_JSON.faithreligion[0].release;
-	document.getElementById('p_author_'+id).innerHTML = actual_JSON.faithreligion[0].author;
-	document.getElementById('a_'+id).href = actual_JSON.faithreligion[0].link;
-	document.getElementById('img_'+id).src = "https:"+actual_JSON.faithreligion[0].main_img;
+	document.getElementById('h3_'+id).innerHTML = actual_JSON.sport[0].title;
+	document.getElementById('p_'+id).innerHTML = actual_JSON.sport[0].content.substr(0, 500)+"...";
+	document.getElementById('p_time_'+id).innerHTML = actual_JSON.sport[0].release;
+	document.getElementById('p_author_'+id).innerHTML = actual_JSON.sport[0].author;
+	document.getElementById('a_'+id).href = actual_JSON.sport[0].link;
+	document.getElementById('img_'+id).src = actual_JSON.sport[0].main_img;
  });
 }
 </script>
@@ -117,7 +117,7 @@ function loadJSON1(jsonf, callback) {
                         <%}%>
 
                        <%if(user.preferences.travel) {%>
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link" href="/profile">Travel</a>
                     </li>
                         <%}%>
@@ -135,8 +135,8 @@ function loadJSON1(jsonf, callback) {
                     <%}%>
 
                      <%if(user.preferences.faith) {%>
-					 <li class="nav-item active">
-                        <a class="nav-link" href="/faith">BeatGoesOn<span class="sr-only">(current)</span></a>
+					 <li class="nav-item">
+                        <a class="nav-link" href="/faith">BeatGoesOn</a>
                     </li>
                     <%}%>
 
@@ -147,18 +147,19 @@ function loadJSON1(jsonf, callback) {
                     </li>
                       <%}%>
 					  
-					  <%if(user.preferences.sport) {%>
-					<li class="nav-item">
-                        <a class="nav-link" href="/sport">Sport</a>
+					    <%if(user.preferences.sport) {%>
+					<li class="nav-item active">
+                        <a class="nav-link" href="/sport">Sport<span class="sr-only">(current)</span></a>
                     </li>
                       <%}%>
+
+				
 					  
 					      <%if(user.preferences.tech) {%>
 					<li class="nav-item">
                         <a class="nav-link" href="/tech">Tech</a>
                     </li>
                       <%}%>
-
                     <li class="nav-item">
                         <a class="nav-link" href="/edit_profile">Edit Profile</a>
                     </li>
@@ -174,9 +175,9 @@ function loadJSON1(jsonf, callback) {
     <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="my-4">BeatGoesOn <small>Top Stories</small></h1>
+        <h1 class="my-4">Sport <small>Top Stories</small></h1>
 
-      <!-- Project One -->
+  <!-- Project One -->
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
@@ -260,7 +261,6 @@ function loadJSON1(jsonf, callback) {
         </div>
         <!-- /.container -->
     </footer>
-
 
     
 

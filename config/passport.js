@@ -93,7 +93,8 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('signupMessage', 'Last Name can not be blank!'));
                      } else if(!req.param('faith') && !req.param('politics') 
                      && !req.param('opinion') && !req.param('health') 
-                     && !req.param('entertainment') && !req.param('travel')){
+                     && !req.param('entertainment') && !req.param('travel')
+					 && !req.param('sport') && !req.param('tech')){
                         return done(null, false, req.flash('signupMessage', 'At least one preference should be added!'));
                     } else {
 
@@ -105,12 +106,14 @@ module.exports = function(passport) {
                         newUser.address  = req.param('address');
                         newUser.email    = email;
                         newUser.password = newUser.generateHash(password);
-                        newUser.preferences.faith = req.param('faith');
-                        newUser.preferences.politics = req.param('politics');
-                        newUser.preferences.opinion = req.param('opinion');
-                        newUser.preferences.health = req.param('health');
-                        newUser.preferences.entertainment = req.param('entertainment');
-                        newUser.preferences.travel = req.param('travel');
+                        newUser.preferences.faith = req.param('faith')? true: false;;
+                        newUser.preferences.politics = req.param('politics')? true: false;;
+                        newUser.preferences.opinion = req.param('opinion')? true: false;;
+                        newUser.preferences.health = req.param('health')? true: false;;
+                        newUser.preferences.entertainment = req.param('entertainment')? true: false;;
+                        newUser.preferences.travel = req.param('travel')? true: false;;
+						 newUser.preferences.sport = req.param('sport')? true: false;;
+                        newUser.preferences.tech = req.param('tech')? true: false;;
 
                         newUser.save(function(err) {
                             if (err)

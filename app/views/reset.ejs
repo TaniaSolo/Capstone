@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Reset Password</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+    <!-- Temporary fix for navbar responsiveness -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    label{
+    	font-weight: bold;
+    }
+    .btn{
+    margin:15px
+    }
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+<!-- jQuery Version 3.1.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="js/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <a class="navbar-brand" href="#">News Aggregation Portal</a>
+            <div class="collapse navbar-collapse" id="navbarExample">
+               
+            </div>
+        </div>
+    </nav>
+   
+   <!-- Page Content -->
+    <div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">Reset Password</h1><br>
+        
+	<!-- Edit Profile FORM -->
+	<form action="" method="post">
+
+		<div class="form-group">
+			<label>Enter New Password</label>
+			<input type="text" class="form-control" name="password">
+		</div>
+        	<div class="form-group">
+			<label>Confirm New Password</label>
+			<input type="text" class="form-control" name="confpassword">
+		</div>
+
+
+		
+		
+		<div align="center">
+		<button type="resetPassword" class="btn btn-warning btn-lg">Reset Password</button>
+       </div>
+	</form>
+    </div>
+    <br>
+    <!-- Footer -->
+    <footer class="py-5 bg-inverse">
+        <div class="container">
+            <p class="m-0 text-center text-white">News Aggregation Portal</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+</body>
+</html>

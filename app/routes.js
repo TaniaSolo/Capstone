@@ -1,4 +1,17 @@
 var User       = require('../app/model/user');
+var async       = require('async');
+var crypto       = require('crypto');
+var nodemailer = require("nodemailer");
+var smtpTransportLib = require('nodemailer-smtp-transport');
+
+
+var helper = require('sendgrid').mail;
+ 
+from_email = new helper.Email("portalnewsagg@sendgrid.com");
+
+var sg   = require('sendgrid')('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');
+
+
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
@@ -61,6 +74,14 @@ module.exports = function(app, passport) {
     // profile SECTION =========================
     app.get('/edit_profile', isLoggedIn, function(req, res) {
         res.render('edit_profile.ejs', {
+            user : req.user
+        });
+    });
+
+
+//RESET PASWORD  ====================
+ app.get('/reset', isLoggedIn, function(req, res) {
+        res.render('reset.ejs', {
             user : req.user
         });
     });
@@ -133,6 +154,142 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }));
 
+        //Forgot password
+        app.get('/forgotPassword', function(req, res) {
+            res.render('forgotPassword', {
+             user: req.user
+            });
+        });
+        
+        app.post('/forgotPassword', function(req, res, next) {
+        async.waterfall([
+            function(done) {
+            crypto.randomBytes(20, function(err, buf) {
+                var token = buf.toString('hex');
+                done(err, token);
+            });
+            },
+            function(token, done) {
+            User.findOne({ email: req.body.email }, function(err, user) {
+                if (!user) {
+                req.flash('error', 'No account with that email address exists.');
+                return res.redirect('/forgotPassword');
+                }
+
+                user.resetPasswordToken = token;
+                user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+                user.save(function(err) {
+                done(err, token, user);
+                });
+            });
+            },
+            function(token, user, done) {
+
+                to_email = new helper.Email(user.email);
+                subject = "News Agregation System Password Reset";
+                content = new helper.Content("text/plain", "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
+                 "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
+                 "http://" + req.headers.host + "/reset/" + token + "\n\n" +
+                 "If you did not request this, please ignore this email and your password will remain unchanged.\n");
+                mail = new helper.Mail(from_email, subject, to_email, content);
+
+            var request = sg.emptyRequest({
+                method: 'POST',
+                path: '/v3/mail/send',
+                body: mail.toJSON()
+                });
+
+                sg.API(request, function(error, response) {
+                    if(error) {
+                        console.log(error.message);
+                    } else if (response) {
+                        console.log(response.statusCode);
+                        console.log(response.body);
+                        console.log(response.headers);
+                        req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+                        done(error, 'done');
+                    }
+                });
+            }
+        ], function(err) {
+            if (err) return next(err);
+            res.redirect('/forgotPassword');
+        });
+    });
+
+    app.get('/reset/:token', function(req, res) {
+        User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+            if (!user) {
+            req.flash('error', 'Password reset token is invalid or has expired.');
+            return res.redirect('/forgotPassword');
+            }
+            res.render('reset.ejs', {
+            user: req.user
+            });
+        });
+    });
+
+    app.post('/reset/:token', function(req, res) {
+        async.waterfall([
+            function(done) {
+            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+                if (!user) {
+                req.flash('error', 'Password reset token is invalid or has expired.');
+                return res.redirect('back');
+                }
+
+                user.password = user.generateHash(req.body.password);
+                user.resetPasswordToken = undefined;
+                user.resetPasswordExpires = undefined;
+
+                user.save(function(err) {
+                req.logIn(user, function(err) {
+                    done(err, user);
+                });
+                });
+            });
+            },
+            function(user, done) {
+
+                // to_email = new helper.Email(user.email);
+                // subject = "News Agregation System Your password has been changed";
+                // content = new helper.Content("Hello,\n\n" +
+                // "This is a confirmation that the password for your account " + user.email + 
+                // " has just been changed.\n");
+                // mail = new helper.Mail(from_email, subject, to_email, content);
+
+                to_email = new helper.Email(user.email);
+                subject = "News Agregation System Password Reset";
+                content = new helper.Content("text/plain", "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
+                 "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
+                 "http://" + req.headers.host + "/reset/" + token + "\n\n" +
+                 "If you did not request this, please ignore this email and your password will remain unchanged.\n");
+                mail = new helper.Mail(from_email, subject, to_email, content);
+
+            var request1 = sg.emptyRequest({
+                method: 'POST',
+                path: '/v3/mail/send',
+                body: mail.toJSON()
+                });
+
+                sg.API(request1, function(error, response) {
+                    if(error) {
+                        console.log(error.message);
+                    } else if (response) {
+                        console.log(response.statusCode);
+                        console.log(response.body);
+                        console.log(response.headers);
+
+                        req.flash('success', 'Success! Your password has been changed.');
+                        done(error);
+                    }
+                });
+            }
+        ], function(err) {
+            res.redirect('/');
+        });
+    });
 
 // =============================================================================
 // AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============

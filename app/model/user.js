@@ -7,6 +7,8 @@ var userSchema = mongoose.Schema({
         last         : String,
         email        : String,
         password     : String,
+        resetPasswordToken: String,
+        resetPasswordExpires: Date,
         preferences  : {
             faith: { type: Boolean, default: false },
             politics: { type: Boolean, default: false },

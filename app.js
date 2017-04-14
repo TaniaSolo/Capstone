@@ -12,6 +12,9 @@ var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var MongoStore = require('connect-mongo')(session);
+var async       = require('async');
+var crypto       = require('crypto');
+var nodemailer = require("nodemailer");
 var app = express();
 
 var port     = process.env.PORT || 3002;
@@ -26,6 +29,7 @@ app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs'); // set up ejs for templating
 // app.set('view engine', 'jade');
 app.use(cookieParser()); //read cookies (needed for auth)
+app.use(session({ secret: 'session secret key' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('stylus').middleware({ src: __dirname + '/app/public' }));

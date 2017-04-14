@@ -31,16 +31,19 @@ module.exports = function(app, passport) {
 
         if(req.user && req.user.preferences) {
             var userPreferences = req.user.preferences;
+            
             if(userPreferences.politics) {
                 res.redirect('/politics');
+            } else if(userPreferences.travel) {
+                 res.redirect('/travel');
+            } else if(userPreferences.opinion) {
+                res.redirect('/opinion');
+            }  else if(userPreferences.health) {
+                res.redirect('/health');
             } else if(userPreferences.faith) {
                 res.redirect('/faith');
             } else if(userPreferences.entertainment) {
                 res.redirect('/entertainment');
-            } else if(userPreferences.health) {
-                res.redirect('/health');
-            } else if(userPreferences.opinion) {
-                res.redirect('/opinion');
             } else if(userPreferences.sport) {
                 res.redirect('/sport');
             } else if(userPreferences.tech) {
@@ -60,6 +63,13 @@ module.exports = function(app, passport) {
 	// POLITICS SECTION =========================
 	   app.get('/politics', isLoggedIn, function(req, res) {
         res.render('politics.ejs', {
+            user : req.user
+        });
+    });
+
+    // TRAVEL SECTION =========================
+	   app.get('/travel', isLoggedIn, function(req, res) {
+        res.render('travel.ejs', {
             user : req.user
         });
     });

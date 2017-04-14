@@ -45,6 +45,8 @@
 </head>
 
 <body>
+
+
 <!-- Navigation -->
     <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,7 +122,11 @@
 
     <!-- Page Heading -->
     <h1 class="my-4">Edit Profile</h1><br>
-        
+        <br>
+	<!-- show any messages that come back with authentication -->
+	<% if (message.length > 0) { %>
+		<div class="alert alert-danger"><%= message %></div>
+	<% } %>
 	<!-- Edit Profile FORM -->
 	<form action="/edit_profile" method="post">
 

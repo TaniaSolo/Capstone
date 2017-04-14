@@ -9,7 +9,7 @@ var helper = require('sendgrid').mail;
  
 from_email = new helper.Email("sendgrid email");
 
-var sg   = require('sendgrid')('API_KEY');
+var sg   = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 
 module.exports = function(app, passport) {

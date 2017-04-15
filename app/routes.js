@@ -3,13 +3,11 @@ var async       = require('async');
 var crypto       = require('crypto');
 var nodemailer = require("nodemailer");
 var smtpTransportLib = require('nodemailer-smtp-transport');
-var express = require('express');
-var app = express();
 var helper = require('sendgrid').mail;
  
-from_email = new helper.Email("sendgrid email");
+from_email = new helper.Email("newsagportal@sendgrid.com");
 
-var sg   = require('sendgrid')(process.env.SENDGRID_API_KEY);
+var sg   = require('sendgrid')('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');
 
 
 module.exports = function(app, passport) {
@@ -270,9 +268,9 @@ module.exports = function(app, passport) {
             },
             function(token, user, done) {
 
-                to_email = new helper.Email(user.email);
-                subject = "News Agregation System Password Reset";
-                content = new helper.Content("text/plain", "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
+                var to_email = new helper.Email(user.email);
+                var subject = "News Agregation System Password Reset";
+                var content = new helper.Content("text/plain", "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
                  "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
                  "http://" + req.headers.host + "/reset/" + token + "\n\n" +
                  "If you did not request this, please ignore this email and your password will remain unchanged.\n");
@@ -336,39 +334,34 @@ module.exports = function(app, passport) {
             },
             function(user, done) {
 
-                // to_email = new helper.Email(user.email);
-                // subject = "News Agregation System Your password has been changed";
-                // content = new helper.Content("Hello,\n\n" +
-                // "This is a confirmation that the password for your account " + user.email + 
-                // " has just been changed.\n");
-                // mail = new helper.Mail(from_email, subject, to_email, content);
+                 req.flash('success', 'Success! Your password has been changed.');
+                 res.redirect('/login');
 
-                to_email = new helper.Email(user.email);
-                subject = "News Agregation System Password Reset";
-                content = new helper.Content("text/plain", "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
-                 "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
-                 "http://" + req.headers.host + "/reset/" + token + "\n\n" +
-                 "If you did not request this, please ignore this email and your password will remain unchanged.\n");
-                mail = new helper.Mail(from_email, subject, to_email, content);
+                //  var to_email = new helper.Email(user.email);
+                //  var subject = "News Agregation System Your password has been changed";
+                //  var content = new helper.Content("Hello,\n\n" +
+                //  "This is a confirmation that the password for your account " + user.email + 
+                //  " has just been changed.\n");
+                // var mail = new helper.Mail(from_email, subject, to_email, content);
 
-            var request1 = sg.emptyRequest({
-                method: 'POST',
-                path: '/v3/mail/send',
-                body: mail.toJSON()
-                });
+            // var request1 = sg.emptyRequest({
+            //     method: 'POST',
+            //     path: '/v3/mail/send',
+            //     body: mail.toJSON()
+            //     });
 
-                sg.API(request1, function(error, response) {
-                    if(error) {
-                        console.log(error.message);
-                    } else if (response) {
-                        console.log(response.statusCode);
-                        console.log(response.body);
-                        console.log(response.headers);
+            //     sg.API(request1, function(error, response) {
+            //         if(error) {
+            //             console.log(error.message);
+            //         } else if (response) {
+            //             console.log(response.statusCode);
+            //             console.log(response.body);
+            //             console.log(response.headers);
 
-                        req.flash('success', 'Success! Your password has been changed.');
-                        done(error);
-                    }
-                });
+            //             req.flash('success', 'Success! Your password has been changed.');
+            //             done(error);
+            //         }
+            //     });
             }
         ], function(err) {
             res.redirect('/');

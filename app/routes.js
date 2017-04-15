@@ -127,7 +127,7 @@ module.exports = function(app, passport) {
     // profile SECTION =========================
     app.get('/edit_profile', isLoggedIn, function(req, res) {
         res.render('edit_profile.ejs', {
-            user : req.user
+            user : req.user, message: req.flash('editMessage')
         });
     });
 
@@ -150,6 +150,31 @@ module.exports = function(app, passport) {
         User.findById(req.session.passport.user, function(err, user) {
         if (!user)
             return next(new Error('Could not load Document'));
+			 else if(req.body.firstName.length == 0){
+                       
+						req.flash('editMessage', 'First Name can not be blank! No change has been made to your profile');
+                return res.redirect('/edit_profile');
+                    } else if(req.body.lastName.length == 0){
+                       
+						req.flash('editMessage', 'Last Name can not be blank! No changes have been made to your profile');
+                return res.redirect('/edit_profile');
+                     } else if(!req.param('faith') && !req.param('politics') 
+                     && !req.param('opinion') && !req.param('health') 
+                     && !req.param('entertainment') && !req.param('travel')
+					 && !req.param('sport') && !req.param('tech')){
+					 req.flash('editMessage', 'At least one preference should be added! No changes have been made to your profile');
+                return res.redirect('/edit_profile');
+                       
+                    }else if(req.body.password.trim() != req.body.conpassword.trim()){
+                       
+						req.flash('editMessage', 'Password and confirm password dont match! No changes have been made to your profile');
+                return res.redirect('/edit_profile');
+                     }else if(req.body.password.trim().length<6){
+                       
+						req.flash('editMessage', 'Password must contain atleast 6 characters. A strong password is advisable (combination of letters , numbers and special characters)');
+                return res.redirect('/edit_profile');
+                     }
+			
         else {
 
             user.first = req.body.firstName;
@@ -164,12 +189,16 @@ module.exports = function(app, passport) {
             user.preferences.travel = req.body.travel ? true: false;
 			user.preferences.sport = req.body.sport ? true: false;
             user.preferences.tech = req.body.tech ? true: false;
+			
+			
+			
             }
             user.save(function(err) {
             if (err)
                 console.log('error');
             else {
                 console.log('success');
+				req.flash('editMessage', 'Profile Updated Successfully!');
                 res.redirect('/edit_profile');
             }
             });

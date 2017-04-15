@@ -96,7 +96,11 @@ module.exports = function(passport) {
                      && !req.param('entertainment') && !req.param('travel')
 					 && !req.param('sport') && !req.param('tech')){
                         return done(null, false, req.flash('signupMessage', 'At least one preference should be added!'));
-                    } else {
+                    }else if(req.param('password').trim() != req.param('conpassword').trim()){
+                        return done(null, false, req.flash('signupMessage', 'Password and confirm password dont match!!'));
+                    }else if(req.param('password').trim().length<6){
+                         return done(null, false, req.flash('signupMessage', 'Password must contain atleast 6 characters. A strong password is advisable (combination of letters , numbers and special characters)'));
+                     }	else {
 
                         // create the user
                         var newUser            = new User();

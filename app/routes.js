@@ -146,6 +146,7 @@ module.exports = function(app, passport) {
         console.log(req.body.lastName);
         console.log(req.body.address);
         console.log(req.body.password);
+		 console.log(user.password);
 
         User.findById(req.session.passport.user, function(err, user) {
         if (!user)
@@ -180,8 +181,11 @@ module.exports = function(app, passport) {
             user.first = req.body.firstName;
             user.last = req.body.lastName;
             user.address = req.body.address;
-			if(!req.body.password.trim()=="******")
+			
+			if(req.body.password!="P@ssw0rd123"){
             user.password = user.generateHash(req.body.password);
+			}
+			
             user.preferences.faith = req.body.faith ? true: false;
             user.preferences.politics = req.body.politics? true: false;
             user.preferences.opinion = req.body.opinion ? true: false;

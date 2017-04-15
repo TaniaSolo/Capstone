@@ -180,6 +180,7 @@ module.exports = function(app, passport) {
             user.first = req.body.firstName;
             user.last = req.body.lastName;
             user.address = req.body.address;
+			if(!req.body.password.trim()=="******")
             user.password = user.generateHash(req.body.password);
             user.preferences.faith = req.body.faith ? true: false;
             user.preferences.politics = req.body.politics? true: false;

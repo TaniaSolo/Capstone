@@ -33,7 +33,15 @@
             width: 100%;
         }
     }
+      .container{
+      margin-left:50px;
+      margin-top:50px;}
+      
+      .btn-warning{color:#fff;background-color:#f0ad4e;border-color:#f0ad4e}.btn-warning:hover{color:#fff;background-color:#ec971f;border-color:#eb9316}.btn-warning.focus,.btn-warning:focus{-webkit-box-shadow:0 0 0 2px rgba(240,173,78,.5);box-shadow:0 0 0 2px rgba(240,173,78,.5)}.btn-warning.disabled,.btn-warning:disabled{background-color:#f0ad4e;border-color:#f0ad4e}.btn-warning.active,.btn-warning:active,.show>.btn-warning.dropdown-toggle{color:#fff;background-color:#ec971f;background-image:none;border-color:#eb9316}
+      .btn-lg{padding:.75rem 1.5rem;font-size:1.25rem;border-radius:.3rem}
+      
     </style>
+
 <!-- jQuery Version 3.1.1 -->
     <script src="js/jquery.js"></script>
 
@@ -45,22 +53,10 @@
 </head>
 
 <body>
-<!-- Navigation -->
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" href="/profile">News Aggregation Portal</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-               
-            </div>
-        </div>
-    </nav>
    
    <!-- Page Content -->
     <div class="container">
-
+<div class="box">
     <!-- Page Heading -->
     <h1 class="my-4">Reset Password</h1><br>
         
@@ -68,29 +64,20 @@
 	<form action="" method="post">
 
 		<div class="form-group">
-			<label>Enter New Password</label>
-			<input type="text" class="form-control" name="password">
+			<label>Enter New Password &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; </label>
+			<input type="text" class="form-control" name="password" size="30">
 		</div>
+      <br>
         	<div class="form-group">
-			<label>Confirm New Password</label>
-			<input type="text" class="form-control" name="confpassword">
+			<label>Confirm New Password &nbsp; &nbsp; &nbsp;</label>
+			<input type="text" class="form-control" name="confpassword" size="30">
 		</div>
-
-
-		
-		
+		<br>
 		<div align="center">
 		<button type="resetPassword" class="btn btn-warning btn-lg">Reset Password</button>
        </div>
 	</form>
     </div>
     <br>
-    <!-- Footer -->
-    <footer class="py-5 bg-inverse">
-        <div class="container">
-            <p class="m-0 text-center text-white">News Aggregation Portal</p>
-        </div>
-        <!-- /.container -->
-    </footer>
 </body>
 </html>

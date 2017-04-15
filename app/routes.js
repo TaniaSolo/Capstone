@@ -5,9 +5,9 @@ var nodemailer = require("nodemailer");
 var smtpTransportLib = require('nodemailer-smtp-transport');
 var helper = require('sendgrid').mail;
  
-from_email = new helper.Email("newsagportal@sendgrid.com");
+from_email = new helper.Email("");
 
-var sg   = require('sendgrid')('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');
+var sg   = require('sendgrid')('');
 
 
 module.exports = function(app, passport) {

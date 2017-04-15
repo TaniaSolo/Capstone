@@ -3,8 +3,8 @@ var async       = require('async');
 var crypto       = require('crypto');
 var nodemailer = require("nodemailer");
 var smtpTransportLib = require('nodemailer-smtp-transport');
-
-
+var express = require('express');
+var app = express();
 var helper = require('sendgrid').mail;
  
 from_email = new helper.Email("sendgrid email");

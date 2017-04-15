@@ -12,8 +12,7 @@
             "cwd": "${workspaceRoot}",
             "env": {
                 "APP_NAME": "CnnWebCrawler",
-                "SERVER_URL": "http://localhost:1337/",
-                "SENDGRID_API_KEY" : "aaa"
+                "SERVER_URL": "http://localhost:1337/"
             }
         },
         {

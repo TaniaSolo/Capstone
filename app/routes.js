@@ -165,7 +165,15 @@ module.exports = function(app, passport) {
 					 req.flash('editMessage', 'At least one preference should be added! No changes have been made to your profile');
                 return res.redirect('/edit_profile');
                        
-                    }
+                    }else if(req.body.password.trim() != req.body.conpassword.trim()){
+                       
+						req.flash('editMessage', 'Password and confirm password dont match! No changes have been made to your profile');
+                return res.redirect('/edit_profile');
+                     }else if(req.body.password.trim().length<6){
+                       
+						req.flash('editMessage', 'Password must contain atleast 6 characters. A strong password is advisable (combination of letters , numbers and special characters)');
+                return res.redirect('/edit_profile');
+                     }
 			
         else {
 
@@ -190,6 +198,7 @@ module.exports = function(app, passport) {
                 console.log('error');
             else {
                 console.log('success');
+				req.flash('editMessage', 'Profile Updated Successfully!');
                 res.redirect('/edit_profile');
             }
             });

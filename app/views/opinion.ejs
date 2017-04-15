@@ -51,7 +51,7 @@ function loadJSON(callback) {
 
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-    xobj.open('GET', "http://21957651.ngrok.io/profile", true); 
+    xobj.open('GET', "http://localhost:3000/profile", true); 
 	 
     xobj.onreadystatechange = function () {
 	
@@ -71,7 +71,7 @@ function loadJSON1(jsonf, callback) {
 
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-    xobj.open('GET', "http://21957651.ngrok.io/"+jsonf, true); 
+    xobj.open('GET', "http://localhost:3000/"+jsonf, true); 
 	 
     xobj.onreadystatechange = function () {
 	
